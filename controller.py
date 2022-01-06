@@ -4,24 +4,24 @@ from disk import Disk
 class Controller:
 
 
-    def __legal_move(self, stacks, current_stack, target_stack) -> int:
-        if stacks[current_stack].size() > 0:
-            if stacks[target_stack].size() > 0:
+    def __legal_move(self, stacks, current_stack, target_stack) -> bool:
+        if stacks[current_stack].get_size() > 0:
+            if stacks[target_stack].get_size() > 0:
                 if stacks[target_stack].peek_top().get_width() > stacks[current_stack].peek_top().get_width():
-                    return 1
+                    return True
                 else:
-                    print("Invalid move: attempt to put a large disk on top of a small one.")
-                    return 0
+                    print("Invalid move: attempt to put a large disk on top of a small one [2].")
+                    return False
             else:
-                return 1
+                return True
         else:
-            print("Invalid move: actual stack is empty.")
-            return 0
+            print("Invalid move: actual stack is empty [1].")
+            return False
 
     def move_disk(self, stacks, current_stack, target_stack):
-        if self.__legal_move(stacks, current_stack, target_stack) == 1:
+        if self.__legal_move(stacks, current_stack, target_stack):
             disk = stacks[current_stack].remove_top()
             stacks[target_stack].push_back(disk)
-            return 1
-        else:
-            return 0
+            print(f"    Stack[0]: {stacks[0].stack_status()}")
+            print(f"    Stack[1]: {stacks[1].stack_status()}")
+            print(f"    Stack[2]: {stacks[2].stack_status()}")
