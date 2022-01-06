@@ -1,10 +1,11 @@
+from rich import print
 from stack import Stack
 from controller import Controller
 
 
 class Game:
     def __init__(self, difficulty):
-        print("Type 'back' if you want to go back to main menu.")
+        print("Type [bold blue]back[/bold blue] if you want to go back to main menu.")
         self.difficulty = difficulty
         self.stacks = [Stack(difficulty), Stack(), Stack()]
         self.controller = Controller()
@@ -29,5 +30,5 @@ class Game:
                     self.controller.move_disk(self.stacks, current_stack - 1, target_stack - 1)
                     return True
         except:
-            print("Insert a valid input [0].")
+            print("[red]Insert a valid input [0].[\red]")
             return True

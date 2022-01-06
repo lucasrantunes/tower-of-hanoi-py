@@ -1,3 +1,5 @@
+from rich import print
+from rich import inspect
 from stack import Stack
 from disk import Disk
 
