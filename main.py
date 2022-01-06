@@ -1,15 +1,12 @@
 from game import Game
-print("Choose one option:")
-print(" 1) Start Game")
-print(" 2) Exit")
 
+user_desire = True
+while user_desire:
 
-while True:
-
-    user_input = int(input())
-    if user_input == 1:
-        g = Game(3)
-    elif user_input == 2:
-        print("Exit")
+    user_input = input("\nType 'start' to star game or 'exit' to quit game: ")
+    if user_input == "start":
+        g = Game(4)
+    elif user_input == "exit":
+        user_desire = False
     else:
         print("Insert a valid option.")
