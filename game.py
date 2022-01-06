@@ -16,9 +16,7 @@ class Game:
         
 
     def __get_user_command(self) -> bool:
-        try:
             user_input = input("Insert moviment: ")
-            print(user_input)
             if user_input == "back": 
                 return False
             else:
@@ -28,7 +26,6 @@ class Game:
 
                 if (current_stack >= 1 and current_stack <= 3) and (target_stack >= 1 and target_stack <= 3):
                     self.controller.move_disk(self.stacks, current_stack - 1, target_stack - 1)
-                    return True
-        except:
-            print("[red]Insert a valid input [0].[\red]")
-            return True
+                else:
+                    print(f"[red]{current_stack} to {target_stack} is not a valid move [1].[/red]")
+                return True
